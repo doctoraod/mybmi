@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
+import 'info_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,9 +26,11 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.pink.shade200, // <-- Button color
+        primarySwatch: Colors.pink, // <-- Button color
       ),
-      home: const WelcomeScreen(),
+      // home: const WelcomeScreen(),
+      home: const InfoScreen(),
     );
   }
 }

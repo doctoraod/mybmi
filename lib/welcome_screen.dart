@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'info_screen.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -57,10 +59,16 @@ class WelcomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                     padding: const EdgeInsets.all(20),
-                    primary: Colors.pink.shade200, // <-- Button color
+                    primary: Theme.of(context).primaryColor, // <-- Button color
                     onPrimary: Colors.white, // <-- Splash color
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    print("test");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return InfoScreen();
+                    }));
+                  },
                   child: const Icon(Icons.arrow_forward),
                 )
               ]),

@@ -1,3 +1,4 @@
+import 'mybmi_screen.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,7 @@ class _InfoScreenState extends State<InfoScreen> {
               children: <Widget>[
                 TextFormField(
                   controller: name,
+                  autovalidateMode: AutovalidateMode.always,
                   decoration: const InputDecoration(
                       hintText: 'Enter your name',
                       labelText: 'Name',
@@ -112,8 +114,10 @@ class _InfoScreenState extends State<InfoScreen> {
                       // the form is invalid.
                       if (_formKey.currentState!.validate()) {
                         // Process data.
-                        print(name.text);
-                        print(gender);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return MyBMIScreen(name: name.text, gender: gender);
+                        }));
                       }
                     },
                     child: const Text('Next'),

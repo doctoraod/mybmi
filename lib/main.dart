@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
 import 'info_screen.dart';
+import 'mybmi_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink, // <-- Button color
       ),
       // home: const WelcomeScreen(),
-      home: const InfoScreen(),
+      home: const MyBMIScreen(name: 'Aod', gender: 'man'),
     );
   }
 }

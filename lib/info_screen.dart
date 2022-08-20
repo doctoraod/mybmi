@@ -14,6 +14,13 @@ class _InfoScreenState extends State<InfoScreen> {
   var gender;
   TextEditingController name = TextEditingController();
   @override
+  Color calculateGender(input) {
+    if (input == 'man') {
+      return gender == 'man' ? Colors.blue : Colors.blue.withOpacity(0.5);
+    }
+    return gender == 'woman' ? Colors.red : Colors.red.withOpacity(0.5);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -57,13 +64,11 @@ class _InfoScreenState extends State<InfoScreen> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: gender == 'man'
-                                  ? Colors.blue
-                                  : Colors.blue.withOpacity(0.5),
+                              color: this.calculateGender('man'),
                               borderRadius: BorderRadius.circular(10)),
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: MediaQuery.of(context).size.width * 0.3,
-                          child: Icon(
+                          child: const Icon(
                             Icons.man,
                             size: 60,
                           ),
@@ -77,9 +82,7 @@ class _InfoScreenState extends State<InfoScreen> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: gender == 'woman'
-                                  ? Colors.red
-                                  : Colors.red.withOpacity(0.5),
+                              color: this.calculateGender('woman'),
                               borderRadius: BorderRadius.circular(10)),
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: MediaQuery.of(context).size.width * 0.3,

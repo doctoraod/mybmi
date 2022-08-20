@@ -2,6 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+List bmiSuggestions = [
+  {
+    "text": "<18.5",
+    "image": "assets/images/under_weight.png",
+    "suggest":
+        "A BMI of under 18.5 indicates that a person has insufficient weight, so they may need to put on some weight. They should ask a doctor or dietitian for advice."
+  },
+  {
+    "text": "18.5-24.9",
+    "image": "assets/images/normal.png",
+    "suggest":
+        "A BMI of 18.5–24.9 indicates that a person has a healthy weight for their height. By maintaining a healthy weight, they can lower their risk of developing serious health problems."
+  },
+  {
+    "text": "25–29.9",
+    "image": "assets/images/over_weight.png",
+    "suggest":
+        "A BMI of 25–29.9 indicates that a person is slightly overweight. A doctor may advise them to lose some weight for health reasons. They should talk with a doctor or dietitian for advice."
+  },
+  {
+    "text": ">30.0",
+    "image": "assets/images/obese.png",
+    "suggest":
+        "A BMI of over 30 indicates that a person has obesity. Their health may be at risk if they do not lose weight. They should talk with a doctor or dietitian for advice."
+  },
+];
+process(double bmi) {
+  if (bmi < 18.5) {
+    return bmiSuggestions[0];
+  } else if (bmi < 25) {
+    return bmiSuggestions[1];
+  } else if (bmi < 30) {
+    return bmiSuggestions[2];
+  }
+  return bmiSuggestions[3];
+}
+
 class MyBMIScreen extends StatefulWidget {
   final String name;
   final String gender;
@@ -131,11 +168,27 @@ class _MyBMIScreenState extends State<MyBMIScreen> {
                     child: const Text('Calculate'),
                   ),
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.only(
-                      top: 20.0, bottom: 20.0, left: 20.0, right: 20.0),
-                  child: Text(bmi.toString()),
+                Visibility(
+                  visible: bmi == 0,
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(
+                        top: 20.0, bottom: 20.0, left: 20.0, right: 20.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Text("test"),
+                        ),
+                        Container(
+                          child: Image.asset(
+                            process(bmi)['image'],
+                            fit: BoxFit.cover,
+                            alignment: Alignment.center,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             )));

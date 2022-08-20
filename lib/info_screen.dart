@@ -21,6 +21,12 @@ class _InfoScreenState extends State<InfoScreen> {
     return gender == 'woman' ? Colors.red : Colors.red.withOpacity(0.5);
   }
 
+  void onChangeGender(input) {
+    setState(() {
+      gender = input;
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -58,9 +64,7 @@ class _InfoScreenState extends State<InfoScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          setState(() {
-                            gender = 'man';
-                          });
+                          this.onChangeGender('man');
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -76,9 +80,7 @@ class _InfoScreenState extends State<InfoScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          setState(() {
-                            gender = 'woman';
-                          });
+                          this.onChangeGender('woman');
                         },
                         child: Container(
                           decoration: BoxDecoration(

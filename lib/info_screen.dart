@@ -56,12 +56,17 @@ class _InfoScreenState extends State<InfoScreen> {
                           });
                         },
                         child: Container(
-                          color: gender == 'man'
-                              ? Colors.blue
-                              : Colors.blue.shade200,
+                          decoration: BoxDecoration(
+                              color: gender == 'man'
+                                  ? Colors.blue
+                                  : Colors.blue.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10)),
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: MediaQuery.of(context).size.width * 0.3,
-                          child: Icon(Icons.man),
+                          child: Icon(
+                            Icons.man,
+                            size: 60,
+                          ),
                         ),
                       ),
                       InkWell(
@@ -71,12 +76,17 @@ class _InfoScreenState extends State<InfoScreen> {
                           });
                         },
                         child: Container(
-                          color: gender == 'woman'
-                              ? Colors.red
-                              : Colors.red.shade200,
+                          decoration: BoxDecoration(
+                              color: gender == 'woman'
+                                  ? Colors.red
+                                  : Colors.red.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10)),
                           width: MediaQuery.of(context).size.width * 0.3,
                           height: MediaQuery.of(context).size.width * 0.3,
-                          child: Icon(Icons.woman),
+                          child: Icon(
+                            Icons.woman,
+                            size: 60,
+                          ),
                         ),
                       )
                     ],
